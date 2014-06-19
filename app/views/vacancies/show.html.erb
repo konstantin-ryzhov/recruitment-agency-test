@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @vacancy.name %>
+</p>
+
+<p>
+  <strong>Created at:</strong>
+  <%= @vacancy.created_at %>
+</p>
+
+<p>
+  <strong>Valid until:</strong>
+  <%= @vacancy.valid_until %>
+</p>
+
+<p>
+  <strong>Salary:</strong>
+  <%= @vacancy.salary %>
+</p>
+
+<p>
+  <strong>Contacts:</strong>
+  <%= @vacancy.contacts %>
+</p>
+
+<%= link_to 'Edit', edit_vacancy_path(@vacancy) %> |
+<%= link_to 'Back', vacancies_path %>
