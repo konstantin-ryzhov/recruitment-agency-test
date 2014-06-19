@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140618190335) do
+ActiveRecord::Schema.define(version: 20140619190758) do
 
   create_table "employees", force: true do |t|
     t.string  "name"
@@ -20,11 +20,21 @@ ActiveRecord::Schema.define(version: 20140618190335) do
     t.decimal "salary"
   end
 
+  create_table "employees_skills", force: true do |t|
+    t.integer "employee_id"
+    t.integer "skill_id"
+  end
+
   create_table "skills", force: true do |t|
     t.string "name"
   end
 
   add_index "skills", ["name"], name: "index_skills_on_name", unique: true
+
+  create_table "skills_vacancies", force: true do |t|
+    t.integer "vacancy_id"
+    t.integer "skill_id"
+  end
 
   create_table "vacancies", force: true do |t|
     t.string   "name"
