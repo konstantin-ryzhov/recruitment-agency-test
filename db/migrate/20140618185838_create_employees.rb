@@ -3,7 +3,7 @@ class CreateEmployees < ActiveRecord::Migration
     create_table :employees do |t|
       t.string :name
       t.string :contacts
-      t.integer :state
+      t.column :state, :integer, default: 0
       t.decimal :salary
     end
   end

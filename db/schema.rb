@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20140618190335) do
   create_table "employees", force: true do |t|
     t.string  "name"
     t.string  "contacts"
-    t.integer "state"
+    t.integer "state",    default: 0
     t.decimal "salary"
   end
 
@@ -28,10 +28,10 @@ ActiveRecord::Schema.define(version: 20140618190335) do
 
   create_table "vacancies", force: true do |t|
     t.string   "name"
-    t.datetime "created_at"
     t.datetime "valid_until"
     t.decimal  "salary"
     t.string   "contacts"
+    t.datetime "created_at"
   end
 
 end
