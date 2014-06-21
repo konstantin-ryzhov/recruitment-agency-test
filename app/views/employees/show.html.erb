@@ -1,29 +1,30 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
+  <strong>ФИО:</strong>
   <%= @employee.name %>
 </p>
 
 <p>
-  <strong>Contacts:</strong>
+  <strong>Контактная информация:</strong>
   <%= @employee.contacts %>
 </p>
 
 <p>
-  <strong>State:</strong>
+  <strong>Статус:</strong>
   <%= @employee.state %>
 </p>
 
 <p>
-  <strong>Salary:</strong>
+  <strong>Желаемая зарплата:</strong>
   <%= @employee.salary %>
 </p>
 
 <p>
-  <strong>Умения</strong>
-  
+  <strong>Умения:</strong>
+  <%= render @employee.skills %>
+  <%= 'нет умений...' if @employee.skills.count <= 0 %>
 </p>
 
-<%= link_to 'Edit', edit_employee_path(@employee) %> |
-<%= link_to 'Back', employees_path %>
+<%= link_to 'Редактировать', edit_employee_path(@employee) %> |
+<%= link_to 'Назад', employees_path %>

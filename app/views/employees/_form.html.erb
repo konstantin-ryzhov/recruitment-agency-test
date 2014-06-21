@@ -1,16 +1,30 @@
-<%= form_for(@employee) do |f| %>
-  <% if @employee.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@employee.errors.count, "error") %> prohibited this employee from being saved:</h2>
+<% if @employee.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@employee.errors.count, "error") %> prohibited this employee from being saved:</h2>
 
-      <ul>
-      <% @employee.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+    <ul>
+    <% @employee.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_tag(employees_add_skill_path, remote: true) do %>
+  <div class="field">
+    <%= label_tag "Умения" %><br>
+    <span id="skills">
+      <% @skills.each do |s,i| %>
+        <%= hidden_field_tag "skills[]", s %>
+        <%= submit_tag s, name: "delete_skill" %>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
+    </span>
+    <%= text_field_tag :add_skill %>
+    <%= submit_tag "Добавить умение" %>
+  </div>
+<% end %>
 
+<%= form_for(@employee) do |f| %>
   <div class="field">
     <%= f.label :name %><br>
     <%= f.text_field :name %>
@@ -27,6 +41,13 @@
     <%= f.label :salary %><br>
     <%= f.text_field :salary %>
   </div>
+
+  <div id="hidden_skills">
+    <% @skills.each do |s| %>
+      <%= hidden_field_tag "skills[]", s %>
+    <% end %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

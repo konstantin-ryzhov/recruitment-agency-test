@@ -1,5 +1,12 @@
 class SkillsController < ApplicationController
   before_action :set_skill, only: [:show, :edit, :update, :destroy]
+  # before_action :set_items_to_add, only: [:add]
+
+  # def add
+  #   @skill.employees.add @new_employee if @new_employee
+  #   @skill.employees.add @new_vacancy if @new_vacancy
+  #   @skill.save
+  # end
 
   # GET /skills
   # GET /skills.json
@@ -66,6 +73,12 @@ class SkillsController < ApplicationController
     def set_skill
       @skill = Skill.find(params[:id])
     end
+
+    # def set_items_to_add
+    #   @new_employee = Employee.find(params[:employee_id])
+    #   @new_vacancy = Vacancy.find(params[:vacancy_id])
+    # end
+
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def skill_params
