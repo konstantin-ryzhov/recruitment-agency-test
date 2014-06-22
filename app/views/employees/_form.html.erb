@@ -10,7 +10,7 @@
   </div>
 <% end %>
 
-<%= form_tag(employees_add_skill_path, remote: true) do %>
+<%= form_tag(skills_edit_skills_path, remote: true) do %>
   <div class="field">
     <%= label_tag "Умения" %><br>
     <span id="skills">
@@ -42,7 +42,7 @@
     <%= f.text_field :salary %>
   </div>
 
-  <div id="hidden_skills">
+  <div class="field" id="hidden_skills">
     <% @skills.each do |s| %>
       <%= hidden_field_tag "skills[]", s %>
     <% end %>

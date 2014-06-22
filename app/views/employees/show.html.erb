@@ -1,3 +1,6 @@
+<h1>Работник</h1>
+
+<h2>Данные</h2>
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -28,3 +31,19 @@
 
 <%= link_to 'Редактировать', edit_employee_path(@employee) %> |
 <%= link_to 'Назад', employees_path %>
+
+<h2>Подходящие вакансии:</h2>
+<p>
+  <% @suitable.each do |v| %>
+  <%= render v %>
+  <% end %>
+  <%= 'Нет вакансий' if @suitable.empty? %>
+</p>
+
+<h2>Частично подходящие вакансии:</h2>
+<p>
+  <% @partially.each do |v| %>
+  <%= render v %>
+  <% end %>
+  <%= 'Нет вакансий' if @partially.empty? %>
+</p>

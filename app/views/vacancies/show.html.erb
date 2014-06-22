@@ -1,29 +1,54 @@
+<h1>Вакансия</h1>
+
+<h2>Данные</h2>
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
+  <strong>Название:</strong>
   <%= @vacancy.name %>
 </p>
 
 <p>
-  <strong>Created at:</strong>
-  <%= @vacancy.created_at %>
+  <strong>Дата добавления:</strong>
+  <%= l @vacancy.created_at.to_date %>
 </p>
 
 <p>
-  <strong>Valid until:</strong>
-  <%= @vacancy.valid_until %>
+  <strong>Срок действия:</strong>
+  <%= l @vacancy.valid_until.to_date %>
 </p>
 
 <p>
-  <strong>Salary:</strong>
+  <strong>Зарплата:</strong>
   <%= @vacancy.salary %>
 </p>
 
 <p>
-  <strong>Contacts:</strong>
+  <strong>Контактная информация:</strong>
   <%= @vacancy.contacts %>
 </p>
 
-<%= link_to 'Edit', edit_vacancy_path(@vacancy) %> |
-<%= link_to 'Back', vacancies_path %>
+<p>
+  <strong>Необходимые умения:</strong>
+  <%= render @vacancy.skills %>
+  <%= 'нет умений...' if @vacancy.skills.count <= 0 %>
+</p>
+
+<%= link_to 'Редактировать', edit_vacancy_path(@vacancy) %> |
+<%= link_to 'Назад', vacancies_path %>
+
+<h2>Подходящие работники</h2>
+<p>
+  <% @suitable.each do |e| %>
+  <%= render e %>
+  <% end %>
+  <%= 'Нет работников' if @suitable.empty? %>
+</p>
+
+<h2>Частично подходящие работники</h2>
+<p>
+  <% @partially.each do |e| %>
+  <%= render e %>
+  <% end %>
+  <%= 'Нет работников' if @partially.empty? %>
+</p>

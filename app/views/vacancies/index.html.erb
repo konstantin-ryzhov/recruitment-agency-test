@@ -7,7 +7,8 @@
       <th>Дата добавления</th>
       <th>Срок действия</th>
       <th>Зарплата</th>
-      <th>Контактную информацию</th>
+      <th>Контактная информация</th>
+      <th>Необходимые умения</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,13 +17,14 @@
     <% @vacancies.each do |vacancy| %>
       <tr>
         <td><%= vacancy.name %></td>
-        <td><%= vacancy.created_at %></td>
-        <td><%= vacancy.valid_until %></td>
+        <td><%= l vacancy.created_at.to_date %></td>
+        <td><%= l vacancy.valid_until.to_date %></td>
         <td><%= vacancy.salary %></td>
         <td><%= vacancy.contacts %></td>
-        <td><%= link_to 'Show', vacancy %></td>
-        <td><%= link_to 'Edit', edit_vacancy_path(vacancy) %></td>
-        <td><%= link_to 'Destroy', vacancy, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= render vacancy.skills %></td>
+        <td><%= link_to 'Показать', vacancy %></td>
+        <td><%= link_to 'Редактировать', edit_vacancy_path(vacancy) %></td>
+        <td><%= link_to 'Удалить', vacancy, method: :delete, data: { confirm: 'Вы уверены?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +32,4 @@
 
 <br>
 
-<%= link_to 'New Vacancy', new_vacancy_path %>
+<%= link_to 'Новая вакансия', new_vacancy_path %>

@@ -1,9 +1,9 @@
-<h1>Listing skills</h1>
+<h1>Умения</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Name</th>
+      <th>Нзвание</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -12,9 +12,9 @@
     <% @skills.each do |skill| %>
       <tr>
         <td><%= skill.name %></td>
-        <td><%= link_to 'Show', skill %></td>
-        <td><%= link_to 'Edit', edit_skill_path(skill) %></td>
-        <td><%= link_to 'Destroy', skill, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Показать', skill %></td>
+        <td><%= link_to 'Редактировать', edit_skill_path(skill) %></td>
+        <td><%= link_to 'Удалить', skill, method: :delete, data: { confirm: 'Вы уверены?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -22,4 +22,4 @@
 
 <br>
 
-<%= link_to 'New Skill', new_skill_path %>
+<%= link_to 'Новое умение', new_skill_path %>

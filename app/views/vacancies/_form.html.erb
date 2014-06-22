@@ -1,4 +1,3 @@
-<%= form_for(@vacancy) do |f| %>
   <% if @vacancy.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@vacancy.errors.count, "error") %> prohibited this vacancy from being saved:</h2>
@@ -10,6 +9,22 @@
       </ul>
     </div>
   <% end %>
+
+  <%= form_tag(skills_edit_skills_path, remote: true) do %>
+  <div class="field">
+    <%= label_tag "Необходимые умения" %><br>
+    <span id="skills">
+      <% @skills.each do |s,i| %>
+        <%= hidden_field_tag "skills[]", s %>
+        <%= submit_tag s, name: "delete_skill" %>
+      <% end %>
+    </span>
+    <%= text_field_tag :add_skill %>
+    <%= submit_tag "Добавить умение" %>
+  </div>
+<% end %>
+
+<%= form_for(@vacancy) do |f| %>
 
   <div class="field">
     <%= f.label :name %><br>
@@ -27,6 +42,12 @@
     <%= f.label :contacts %><br>
     <%= f.text_field :contacts %>
   </div>
+  <div class="field" id="hidden_skills">
+    <% @skills.each do |s| %>
+      <%= hidden_field_tag "skills[]", s %>
+    <% end %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

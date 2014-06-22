@@ -1,14 +1,12 @@
 Rails.application.routes.draw do
 
-  root 'vacancies#index'
+  root 'employees#index'
 
   resources :skills
-  resources :employees do
-    
-  end
+  resources :employees
   resources :vacancies
 
-  post 'employees/add_skill' => 'employees#edit_skills'
+  post 'skills/edit_skills' => 'skills#edit_skills'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

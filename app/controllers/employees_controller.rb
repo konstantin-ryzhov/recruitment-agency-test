@@ -1,14 +1,7 @@
 class EmployeesController < ApplicationController
   before_action :set_employee, only: [:show, :edit, :update, :destroy]
-  before_action :set_skills, only: [:edit_skills, :create, :update]
 
-  def edit_skills
-    if params[:delete_skill]
-      @skills.delete(params[:delete_skill])
-    else
-      @skills << params[:add_skill] if params[:add_skill]
-    end
-  end
+  before_action :set_skills, only: [:create, :update]
 
   # GET /employees
   # GET /employees.json
@@ -19,6 +12,27 @@ class EmployeesController < ApplicationController
   # GET /employees/1
   # GET /employees/1.json
   def show
+    vacancies = Array.new
+    @suitable = Array.new
+    @partially = Array.new
+
+    @employee.skills.each do |skill|
+      vacancies.concat skill.vacancies.where("valid_until > ?",DateTime.now).to_a
+    end
+    vacancies.uniq!
+    
+    vacancies.each do |v|
+      if v.skills - @employee.skills == []
+        @suitable.push v
+      else
+        @partially.push v
+      end
+    end
+
+    @suitable.sort_by! { |v| v.salary }
+    @suitable.reverse!
+    @partially.sort_by! { |v| v.salary }
+    @partially.reverse!
   end
 
   # GET /employees/new
@@ -41,13 +55,12 @@ class EmployeesController < ApplicationController
       if @employee.save
         format.html { redirect_to @employee, notice: 'Employee was successfully created.' }
         format.json { render :show, status: :created, location: @employee }
+        insert_skills_into_item @employee
       else
         format.html { render :new }
         format.json { render json: @employee.errors, status: :unprocessable_entity }
       end
     end
-
-    insert_skills_into_employee @employee
   end
 
   # PATCH/PUT /employees/1
@@ -57,13 +70,12 @@ class EmployeesController < ApplicationController
       if @employee.update(employee_params)
         format.html { redirect_to @employee, notice: 'Employee was successfully updated.' }
         format.json { render :show, status: :ok, location: @employee }
+        insert_skills_into_item @employee
       else
         format.html { render :edit }
         format.json { render json: @employee.errors, status: :unprocessable_entity }
       end
     end
-
-    insert_skills_into_employee @employee
   end
 
   # DELETE /employees/1
@@ -84,18 +96,17 @@ class EmployeesController < ApplicationController
 
     def set_skills
       @skills = params[:skills] ? params[:skills] : Array.new
-
     end
 
-    def insert_skills_into_employee employee
-      if employee
-        employee.skills.clear
+    def insert_skills_into_item item
+      if item and not item.new_record?
+        item.skills.clear
         @skills.each do |s|
           skill = Skill.find_by_name(s)
           if skill
-            employee.skills << skill
+            item.skills << skill
           else
-            employee.skills.create(name: s)
+            item.skills.create(name: s)
           end
         end
       end

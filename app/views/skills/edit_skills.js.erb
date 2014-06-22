@@ -1,0 +1,2 @@
+$('#hidden_skills').html("<% @skills.each do |s| %><%=j hidden_field_tag 'skills[]', s %><% end %>");
+$('#skills').html("<% @skills.each do |s| %><%=j hidden_field_tag 'skills[]', s %><%=j submit_tag s, name: 'delete_skill' %><% end %>");
