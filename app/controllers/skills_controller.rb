@@ -1,6 +1,8 @@
 class SkillsController < ApplicationController
   before_action :set_skill, only: [:show, :edit, :update, :destroy]
 
+  autocomplete :skill, :name, :full => true
+
   def edit_skills
     set_skills
 

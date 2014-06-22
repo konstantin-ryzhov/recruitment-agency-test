@@ -2,10 +2,12 @@ Rails.application.routes.draw do
 
   root 'employees#index'
 
-  resources :skills
+  resources :skills do
+    get :autocomplete_skill_name, :on => :collection
+  end
   resources :employees
   resources :vacancies
-
+  
   post 'skills/edit_skills' => 'skills#edit_skills'
 
   # The priority is based upon order of creation: first created -> highest priority.

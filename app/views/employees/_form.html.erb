@@ -19,7 +19,7 @@
         <%= submit_tag s, name: "delete_skill" %>
       <% end %>
     </span>
-    <%= text_field_tag :add_skill %>
+    <%= autocomplete_field_tag :add_skill, '', autocomplete_skill_name_skills_path %>
     <%= submit_tag "Добавить умение" %>
   </div>
 <% end %>
