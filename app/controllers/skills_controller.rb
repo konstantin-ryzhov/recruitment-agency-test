@@ -11,6 +11,9 @@ class SkillsController < ApplicationController
     else
       @skills << params[:add_skill] if params[:add_skill]
     end
+    puts @skills
+    @skills.uniq!
+    puts @skills
   end
 
   # GET /skills

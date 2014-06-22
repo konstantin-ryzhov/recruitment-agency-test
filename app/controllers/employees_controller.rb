@@ -100,7 +100,7 @@ class EmployeesController < ApplicationController
     def insert_skills_into_item item
       if item and not item.new_record?
         item.skills.clear
-        @skills.each do |s|
+        @skills.uniq.each do |s|
           skill = Skill.find_by_name(s)
           if skill
             item.skills << skill
