@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'thin'
+gem 'tzinfo-data' # для запуска под Windows
 gem 'jquery-ui-rails'
 gem 'rails4-autocomplete'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
