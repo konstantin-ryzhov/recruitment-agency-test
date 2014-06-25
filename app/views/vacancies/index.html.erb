@@ -17,8 +17,8 @@
     <% @vacancies.each do |vacancy| %>
       <tr>
         <td><%= vacancy.name %></td>
-        <td><%= l vacancy.created_at.to_date %></td>
-        <td><%= l vacancy.valid_until.to_date %></td>
+        <td><%=l vacancy.created_at.to_date %></td>
+        <td><%=l vacancy.valid_until.to_date %></td>
         <td><%= vacancy.salary %></td>
         <td><%= vacancy.contacts %></td>
         <td><%= render vacancy.skills %></td>

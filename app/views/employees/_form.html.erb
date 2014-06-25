@@ -1,7 +1,6 @@
 <% if @employee.errors.any? %>
   <div id="error_explanation">
-    <h2><%= pluralize(@employee.errors.count, "error") %> prohibited this employee from being saved:</h2>
-
+    <h2>Из-за <%= @employee.errors.count %> <%= Russian.p(@employee.errors.count, "ошибки","ошибок","ошибок") %> нельзя сохранить данные:</h2>
     <ul>
     <% @employee.errors.full_messages.each do |message| %>
       <li><%= message %></li>
@@ -37,7 +36,7 @@
     <%= f.text_field :salary %>
   </div>
 
-  <div class="field" id="hidden_skills">
+  <div id="hidden_skills">
     <% @skills.each do |s| %>
       <%= hidden_field_tag "skills[]", s %>
     <% end %>

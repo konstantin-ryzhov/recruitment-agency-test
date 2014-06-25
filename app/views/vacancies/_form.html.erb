@@ -1,7 +1,6 @@
   <% if @vacancy.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@vacancy.errors.count, "error") %> prohibited this vacancy from being saved:</h2>
-
+    <h2>Из-за <%= @vacancy.errors.count %> <%= Russian.p(@vacancy.errors.count, "ошибки","ошибок","ошибок") %> нельзя сохранить данные:</h2>
       <ul>
       <% @vacancy.errors.full_messages.each do |message| %>
         <li><%= message %></li>

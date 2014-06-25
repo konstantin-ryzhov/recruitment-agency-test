@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'russian', '~> 0.6.0'
 gem 'thin'
 gem 'tzinfo-data' # для запуска под Windows
 gem 'jquery-ui-rails'

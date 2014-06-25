@@ -1,0 +1,23 @@
+ru:
+  activerecord:
+    models:
+      employee: "Работник"
+      skill: "Умение"
+      vacancy: "Вакансия"
+    attributes:
+      employee:
+        name: "Имя"
+        contacts: "Контакты"
+        state: "Статус"
+        salary: "Зарплата"
+      skill:
+        name: "Название"
+      vacancy:
+        name: "Название"
+        valid_until: "Срок действия до"
+        salary: "Зарплата"
+        contacts: "Контакты"
+        created_at: "Создано"
+
+  
+
