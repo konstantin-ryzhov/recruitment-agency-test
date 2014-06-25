@@ -50,7 +50,7 @@ class VacanciesController < ApplicationController
 
     respond_to do |format|
       if @vacancy.save
-        format.html { redirect_to @vacancy, notice: 'Vacancy was successfully created.' }
+        format.html { redirect_to @vacancy, notice: 'Вакансия создана.' }
         format.json { render :show, status: :created, location: @vacancy }
         insert_skills_into_item @vacancy
       else
@@ -65,7 +65,7 @@ class VacanciesController < ApplicationController
   def update
     respond_to do |format|
       if @vacancy.update(vacancy_params)
-        format.html { redirect_to @vacancy, notice: 'Vacancy was successfully updated.' }
+        format.html { redirect_to @vacancy, notice: 'Вакансия обновлена.' }
         format.json { render :show, status: :ok, location: @vacancy }
         insert_skills_into_item @vacancy
       else
@@ -80,7 +80,7 @@ class VacanciesController < ApplicationController
   def destroy
     @vacancy.destroy
     respond_to do |format|
-      format.html { redirect_to vacancies_url, notice: 'Vacancy was successfully destroyed.' }
+      format.html { redirect_to vacancies_url, notice: 'Вакансия удалена.' }
       format.json { head :no_content }
     end
   end

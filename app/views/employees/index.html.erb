@@ -17,7 +17,7 @@
       <tr>
         <td><%= employee.name %></td>
         <td><%= employee.contacts %></td>
-        <td><%= employee.state %></td>
+        <td><%=t employee.state %></td>
         <td><%= employee.salary %></td>
         <td><%= render employee.skills %></td>
         <td><%= link_to 'Показать', employee %></td>

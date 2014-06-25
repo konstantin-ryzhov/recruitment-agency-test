@@ -1,4 +1,8 @@
 ru:
+  active: "В поиске"
+  employed: "Трудоустроен"
+  interesting: "Готов к предложениям"
+
   activerecord:
     models:
       employee: "Работник"

@@ -29,7 +29,7 @@
   </div>
   <div class="field">
     <%= f.label :state %><br>
-    <%= f.select :state, options_for_select(Employee.states.map {|i,j| [i,i]}) %>
+    <%= f.select :state, options_for_select(Employee.states.map {|i,j| [I18n.t(i),i]}) %>
   </div>
   <div class="field">
     <%= f.label :salary %><br>
