@@ -1,7 +1,7 @@
 <h1>Вакансия</h1>
-
-<h2>Данные</h2>
 <p id="notice"><%= notice %></p>
+<h2>Сведения о вакансии</h2>
+<%= link_to 'Редактировать', edit_vacancy_path(@vacancy) %>
 
 <p>
   <strong>Название:</strong>
@@ -34,10 +34,8 @@
   <%= 'нет умений...' if @vacancy.skills.count <= 0 %>
 </p>
 
-<%= link_to 'Редактировать', edit_vacancy_path(@vacancy) %> |
-<%= link_to 'Назад', vacancies_path %>
-
 <h2>Подходящие работники</h2>
+
 <p>
   <% @suitable.each do |e| %>
   <%= render e %>

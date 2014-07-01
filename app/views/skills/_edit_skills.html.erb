@@ -1,0 +1,15 @@
+<% unless parent.new_record? %>
+
+	<% parent.skills.each do |skill| %>
+		<p>
+			<%= skill.name %>
+			<%= link_to 'Удалить', [parent, skill], method: :delete, data: { confirm: 'Вы уверены?' } %>
+		</p>
+	<% end %>
+
+	<%= form_tag [parent, :skills] do %>
+    	<%= autocomplete_field :skill, :name, autocomplete_skill_name_skills_path %>
+    	<%= submit_tag 'Добавить' %>
+	<% end %>
+
+<% end %>

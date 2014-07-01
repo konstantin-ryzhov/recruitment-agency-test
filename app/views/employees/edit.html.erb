@@ -1,6 +1,10 @@
 <h1>Редактирование работника</h1>
-
+<p id="notice"><%= notice %></p>
+<h2>Сведения о работнике</h2>
 <%= render 'form' %>
 
-<%= link_to 'Показать', @employee %> |
-<%= link_to 'Назад', employees_path %>
+<h2>Умения работника</h2>
+<%= render partial: 'skills/edit_skills', locals: { parent: @employee } %>
+
+<%= link_to 'Завершить редактирование', @employee %> |
+<%= link_to 'К списку работников', employees_path %>

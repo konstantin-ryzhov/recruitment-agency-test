@@ -9,15 +9,6 @@
     </div>
   <% end %>
 
-  <%= form_tag(skills_edit_skills_path, remote: true) do %>
-  <div class="field">
-    <%= label_tag "Необходимые умения" %><br>
-    <span id="skills"><% @skills.each do |s,i| %><%= hidden_field_tag "skills[]", s %><%= submit_tag s, name: "delete_skill" %><% end %></span>
-      <%= autocomplete_field_tag :add_skill, '', autocomplete_skill_name_skills_path %>
-      <%= submit_tag "Добавить умение" %>
-  </div>
-<% end %>
-
 <%= form_for(@vacancy) do |f| %>
 
   <div class="field">
@@ -36,12 +27,6 @@
     <%= f.label :contacts %><br>
     <%= f.text_field :contacts %>
   </div>
-  <div class="field" id="hidden_skills">
-    <% @skills.each do |s| %>
-      <%= hidden_field_tag "skills[]", s %>
-    <% end %>
-  </div>
-
   <div class="actions">
     <%= f.submit %>
   </div>

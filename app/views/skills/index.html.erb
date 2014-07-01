@@ -1,10 +1,12 @@
 <h1>Умения</h1>
 
+<p id="notice"><%= notice %></p>
+
 <table>
   <thead>
     <tr>
       <th>Нзвание</th>
-      <th colspan="3"></th>
+      <th></th>
     </tr>
   </thead>
 
@@ -12,8 +14,6 @@
     <% @skills.each do |skill| %>
       <tr>
         <td><%= skill.name %></td>
-        <td><%= link_to 'Показать', skill %></td>
-        <td><%= link_to 'Редактировать', edit_skill_path(skill) %></td>
         <td><%= link_to 'Удалить', skill, method: :delete, data: { confirm: 'Вы уверены?' } %></td>
       </tr>
     <% end %>
@@ -22,4 +22,4 @@
 
 <br>
 
-<%= link_to 'Новое умение', new_skill_path %>
+<%= render 'form' %>

@@ -1,7 +1,7 @@
 <h1>Работник</h1>
-
-<h2>Данные</h2>
 <p id="notice"><%= notice %></p>
+<h2>Сведения о работнике</h2>
+<%= link_to 'Редактировать', edit_employee_path(@employee) %>
 
 <p>
   <strong>ФИО:</strong>
@@ -28,9 +28,6 @@
   <%= render @employee.skills %>
   <%= 'нет умений...' if @employee.skills.count <= 0 %>
 </p>
-
-<%= link_to 'Редактировать', edit_employee_path(@employee) %> |
-<%= link_to 'Назад', employees_path %>
 
 <h2>Подходящие вакансии:</h2>
 <p>

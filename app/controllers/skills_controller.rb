@@ -1,65 +1,36 @@
 class SkillsController < ApplicationController
-  before_action :set_skill, only: [:show, :edit, :update, :destroy]
+  before_action :set_skill, only: [:destroy]
+  before_action :set_parent, only: [:destroy, :create]
 
   autocomplete :skill, :name, :full => true
-
-  def edit_skills
-    set_skills
-
-    if params[:delete_skill]
-      @skills.delete(params[:delete_skill])
-    else
-      @skills << params[:add_skill] if params[:add_skill]
-    end
-    @skills.uniq!
-  end
 
   # GET /skills
   # GET /skills.json
   def index
     @skills = Skill.all
-  end
-
-  # GET /skills/1
-  # GET /skills/1.json
-  def show
-  end
-
-  # GET /skills/new
-  def new
     @skill = Skill.new
-  end
-
-  # GET /skills/1/edit
-  def edit
   end
 
   # POST /skills
   # POST /skills.json
   def create
-    @skill = Skill.new(skill_params)
+    @skill = Skill.find_by(skill_params)
+    @skill = Skill.create(skill_params) unless @skill
 
-    respond_to do |format|
-      if @skill.save
-        format.html { redirect_to @skill, notice: 'Умение создано.' }
-        format.json { render :show, status: :created, location: @skill }
-      else
-        format.html { render :new }
-        format.json { render json: @skill.errors, status: :unprocessable_entity }
+    if @parent
+      @parent.skills << @skill unless @parent.skills.exists? @skill
+      respond_to do |format|
+        format.html { redirect_to [:edit, @parent] , notice: 'Умение добавлено.' }
       end
-    end
-  end
-
-  # PATCH/PUT /skills/1
-  # PATCH/PUT /skills/1.json
-  def update
-    respond_to do |format|
-      if @skill.update(skill_params)
-        format.html { redirect_to @skill, notice: 'Умение обновлено.' }
-        format.json { render :show, status: :ok, location: @skill }
-      else
-        format.html { render :edit }
-        format.json { render json: @skill.errors, status: :unprocessable_entity }
+    else
+      respond_to do |format|
+        unless @skill.errors.any?
+          format.html { redirect_to skills_url, notice: "Умение \"#{@skill.name}\" создано." }
+          format.json { render :show, status: :created, location: @skill }
+        else
+          format.html { render :new }
+          format.json { render json: @skill.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
@@ -67,10 +38,17 @@ class SkillsController < ApplicationController
   # DELETE /skills/1
   # DELETE /skills/1.json
   def destroy
-    @skill.destroy
-    respond_to do |format|
-      format.html { redirect_to skills_url, notice: 'Умение удалено.' }
-      format.json { head :no_content }
+    if @parent
+      @parent.skills.delete(@skill)
+      respond_to do |format|
+        format.html { redirect_to [:edit, @parent], notice: 'Умение удалено.' }
+      end
+    else
+      @skill.destroy
+      respond_to do |format|
+        format.html { redirect_to skills_url, notice: 'Умение удалено.' }
+        format.json { head :no_content }
+      end
     end
   end
 
@@ -80,8 +58,9 @@ class SkillsController < ApplicationController
       @skill = Skill.find(params[:id])
     end
 
-    def set_skills
-      @skills = params[:skills] ? params[:skills] : Array.new
+    def set_parent
+      @parent = Employee.find(params[:employee_id]) if params[:employee_id]
+      @parent = Vacancy.find(params[:vacancy_id]) if params[:vacancy_id]
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
