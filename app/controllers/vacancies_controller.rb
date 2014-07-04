@@ -47,7 +47,7 @@ class VacanciesController < ApplicationController
 
     respond_to do |format|
       if @vacancy.save
-        format.html { redirect_to edit_vacancy_path(@vacancy), notice: 'Вакансия создана.' }
+        format.html { redirect_to edit_vacancy_path(@vacancy), notice: 'Вакансия создана. Заполните требуемые умения.' }
         format.json { render :show, status: :created, location: @vacancy }
       else
         format.html { render :new }

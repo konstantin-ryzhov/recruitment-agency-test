@@ -1,0 +1,6 @@
+h1 Вакансия
+.row
+  .col-sm-6
+    = render 'form'
+
+    = render partial: 'skills/edit_skills', locals: { parent: @vacancy }

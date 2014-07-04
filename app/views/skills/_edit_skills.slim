@@ -1,0 +1,20 @@
+.form-horizontal
+  .form-group
+    label.col-sm-3.control-label Умения:
+    .col-sm-9.form-control-static
+      - parent.skills.each do |skill|
+        span.label.label-default
+          = skill.name
+          '
+          = link_to [parent, skill], method: :delete, data: { confirm: 'Вы уверены?' }, class: '' do
+              strong &times;
+        '
+
+  = form_tag [parent, :skills] do
+    .form-group
+      .col-sm-offset-3.col-sm-9
+        .input-group
+          /= autocomplete_field :skill, :name, autocomplete_skill_name_skills_path, class: 'form-control', placeholder: 'Укажите умение'
+          = text_field :skill, :name, class: 'form-control', placeholder: 'Укажите умение'
+          span.input-group-btn
+            = button_tag 'Добавить', class: 'btn btn-default'

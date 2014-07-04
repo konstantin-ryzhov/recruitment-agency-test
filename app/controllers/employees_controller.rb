@@ -49,7 +49,7 @@ class EmployeesController < ApplicationController
     
     respond_to do |format|
       if @employee.save
-        format.html { redirect_to edit_employee_path(@employee), notice: 'Работник создан.' }
+        format.html { redirect_to edit_employee_path(@employee), notice: 'Работник создан. Заполните умения.' }
         format.json { render :show, status: :created, location: @employee }
       else
         format.html { render :new }

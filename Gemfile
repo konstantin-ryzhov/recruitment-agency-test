@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+gem 'slim'
+gem 'bootstrap-sass'
+gem 'select2-rails'
 gem 'russian', '~> 0.6.0'
 gem 'thin'
 gem 'tzinfo-data' # для запуска под Windows

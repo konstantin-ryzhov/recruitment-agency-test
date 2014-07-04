@@ -1,0 +1,33 @@
+doctype html
+html
+  head
+    title Кадровое агенство
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+
+  body
+    div.container
+
+      nav class='navbar navbar-default'
+        div class='container-fluid'
+          div class='navbar-header'
+            button class='navbar-toggle collapsed' data-target='.navbar-collapse' data-toggle='collapse' type='button'
+              span.icon-bar
+              span.icon-bar
+              span.icon-bar
+            = link_to 'Кадровое агенство', root_path, class: 'navbar-brand'
+          div class='navbar-collapse collapse'
+            ul class='nav navbar-nav'
+              li = link_to 'Работники', employees_path
+              li = link_to 'Вакансии', vacancies_path
+              li = link_to 'Умения', skills_path
+
+      - if notice
+        div class='alert alert-success alert-dismissible'
+          = notice
+          button type="button" class="close" data-dismiss="alert"
+            span aria-hidden="true" &times;
+            span class="sr-only" Close
+
+      == yield

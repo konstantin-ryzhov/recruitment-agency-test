@@ -26,5 +26,8 @@ module RecruitmentAgencyTest
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     config.i18n.default_locale = :ru
+
+    # Меняет обертку полей с ошибками
+    config.action_view.field_error_proc = Proc.new{ |html_tag, instance| "<div class=\"has-error\">#{html_tag}</div>".html_safe }
   end
 end

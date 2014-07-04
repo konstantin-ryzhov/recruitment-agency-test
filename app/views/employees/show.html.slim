@@ -1,0 +1,41 @@
+h1 Работник
+.row
+  .col-sm-6
+    .form-horizontal
+      .form-group
+        label.col-sm-3.control-label Имя:
+        .col-sm-9.form-control-static = @employee.name
+      .form-group
+        label.col-sm-3.control-label Контакты:
+        .col-sm-9.form-control-static = @employee.contacts
+      .form-group
+        label.col-sm-3.control-label Статус:
+        .col-sm-9.form-control-static =t @employee.state
+      .form-group
+        label.col-sm-3.control-label Зарплата:
+        .col-sm-9.form-control-static #{@employee.salary} руб.
+      .form-group
+        label.col-sm-3.control-label Умения:
+        .col-sm-9.form-control-static
+          = render @employee.skills
+          = 'нет умений...' if @employee.skills.count <= 0
+      .form-group
+        .col-sm-9.col-sm-offset-3
+          = link_to 'Редактировать', edit_employee_path(@employee), class: 'btn btn-default'
+
+  .col-sm-5.col-sm-offset-1
+    .panel.panel-default
+      .panel-heading
+        h4 Подходящие вакансии:
+      .panel-body
+        - @suitable.each do |v|
+          = render v
+        = 'Нет вакансий' if @suitable.empty?
+
+    .panel.panel-default
+      .panel-heading
+        h4 Частично подходящие вакансии:
+      .panel-body
+        - @partially.each do |v|
+          = render v
+        = 'Нет вакансий' if @partially.empty?

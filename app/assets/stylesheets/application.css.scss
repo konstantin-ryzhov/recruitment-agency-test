@@ -12,5 +12,25 @@
  *
  *= require_self
  *= require jquery.ui.autocomplete
+ *= require select2
+ *= require select2-bootstrap
  *= require_tree .
  */
+
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
+
+body {
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+.label {
+  a {
+    color: #aaa;
+    &:hover {
+      color: #fff;
+      text-decoration: none;
+    }
+  }
+}

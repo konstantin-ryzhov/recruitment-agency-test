@@ -1,0 +1,39 @@
+- if @employee.errors.any?
+  .alert.alert-danger
+    strong
+      | Из-за #{@employee.errors.count} 
+      | #{Russian.p(@employee.errors.count, "ошибки","ошибок","ошибок")} 
+      | нельзя сохранить данные:
+    ul
+      - @employee.errors.full_messages.each do |message|
+        li = message
+
+= form_for @employee, html: {class:'form-horizontal'} do |f|
+  
+  .form-group
+    label.col-sm-3.control-label Имя:
+    .col-sm-9
+      = f.text_field :name, class: 'form-control', placeholder: 'Укажите ФИО'
+  
+  .form-group
+    label.col-sm-3.control-label Контакты:
+    .col-sm-9
+      = f.text_field :contacts, class: 'form-control', placeholder: 'Укажите телефон или почту'
+
+  .form-group
+    label.col-sm-3.control-label Статус:
+    .col-sm-9
+      = f.collection_radio_buttons :state,\
+                                   Employee.states.map {|k,v| [k, t(k)]}, \
+                                   :first, \
+                                   :last do |b|
+        .radio = b.label { b.radio_button + b.text }
+  
+  .form-group
+    label.col-sm-3.control-label Зарплата:
+    .col-sm-9
+      = f.text_field :salary, class: 'form-control', placeholder: 'Укажите желаемую зарплату'
+  
+  .form-group
+    .col-sm-offset-3.col-sm-9
+      = f.submit 'Сохранить', class: 'btn btn-default'

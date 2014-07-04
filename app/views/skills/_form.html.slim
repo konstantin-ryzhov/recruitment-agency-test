@@ -1,0 +1,15 @@
+- if @skill.errors.any?
+  div class='alert alert-danger'
+    h2
+      Из-за
+      = @skill.errors.count 
+      = Russian.p(@skill.errors.count, "ошибки","ошибок","ошибок")
+      нельзя сохранить данные:
+    ul
+      - @skill.errors.full_messages.each do |message|
+        li = message
+
+
+= form_for @skill, html: { class: 'form-inline' } do |f|
+  = f.text_field :name, class: 'form-control', placeholder: 'Укажите умение'
+  = f.submit 'Добавить', class: 'btn btn-default'

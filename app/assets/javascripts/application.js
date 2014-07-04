@@ -15,4 +15,8 @@
 //= require turbolinks
 //= require jquery.ui.autocomplete
 //= require autocomplete-rails
+//= require bootstrap-sprockets
+//= require select2
 //= require_tree .
+
+$(document).ready(function() { $("#selectpicker").select2(); });

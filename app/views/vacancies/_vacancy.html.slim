@@ -1,0 +1,9 @@
+p
+  .media
+    .media-body
+      .media-heading
+        p
+          = link_to vacancy.name, vacancy_path(vacancy)
+      p
+        = render vacancy.skills
+        strong #{vacancy.salary} руб.
