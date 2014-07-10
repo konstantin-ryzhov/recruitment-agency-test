@@ -2,20 +2,22 @@ class SkillsController < ApplicationController
   before_action :set_skill, only: [:destroy]
   before_action :set_parent, only: [:destroy, :create]
 
-  autocomplete :skill, :name, :full => true
-
   # GET /skills
   # GET /skills.json
   def index
-    @skills = Skill.all
+    if params[:query].nil?
+      @skills = Skill.all
+    else
+      @skills = Skill.order(name: :asc).where(Skill.arel_table[:name].matches "%#{params[:query]}%").first(10)
+    end
+
     @skill = Skill.new
   end
 
   # POST /skills
   # POST /skills.json
   def create
-    @skill = Skill.find_by(skill_params)
-    @skill = Skill.create(skill_params) unless @skill
+    @skill = Skill.find_or_create_by(skill_params)
 
     if @parent
       @parent.skills << @skill unless @parent.skills.exists? @skill

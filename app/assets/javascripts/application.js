@@ -13,10 +13,27 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require jquery.ui.autocomplete
-//= require autocomplete-rails
 //= require bootstrap-sprockets
-//= require select2
+
+//= require magicsuggest
 //= require_tree .
 
-$(document).ready(function() { $("#selectpicker").select2(); });
+$(document).on('page:change', function ()
+{
+  $("#skill_select").magicSuggest({
+    autoSelect: false,
+    maxSelection: null,
+    hideTrigger: true,
+    highlight: false,
+    cls: 'form-control-addition',
+    selectionCls: 'selection-addition',
+
+    method: 'get',
+    data: '/skills.json',
+    valueField: 'name',
+    displayField: 'name',
+
+    placeholder: 'Укажите умения...',
+    noSuggestionText: 'Нет совпадений...'
+  });
+});

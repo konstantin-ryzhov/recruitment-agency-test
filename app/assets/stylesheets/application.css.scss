@@ -11,9 +11,7 @@
  * file per style scope.
  *
  *= require_self
- *= require jquery.ui.autocomplete
- *= require select2
- *= require select2-bootstrap
+ *= require magicsuggest
  *= require_tree .
  */
 
@@ -25,7 +23,7 @@ body {
 	padding-bottom: 20px;
 }
 
-.label {
+.label-default {
   a {
     color: #aaa;
     &:hover {
@@ -33,4 +31,22 @@ body {
       text-decoration: none;
     }
   }
+}
+
+.form-control-addition {
+  min-height: 34px;
+}
+
+.selection-addition
+{
+  background-color: rgb(119, 119, 119) !important;
+  border-style: none !important;
+  color: white !important;
+  font-size: 75% !important;
+  font-weight: bold !important;
+  text-align: center !important;
+}
+
+.ms-res-ctn .ms-res-item-active {
+    background-color: rgb(220, 240, 220) !important;
 }

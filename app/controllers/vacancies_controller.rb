@@ -47,7 +47,7 @@ class VacanciesController < ApplicationController
 
     respond_to do |format|
       if @vacancy.save
-        format.html { redirect_to edit_vacancy_path(@vacancy), notice: 'Вакансия создана. Заполните требуемые умения.' }
+        format.html { redirect_to vacancy_path(@vacancy), notice: 'Вакансия создана.' }
         format.json { render :show, status: :created, location: @vacancy }
       else
         format.html { render :new }
@@ -88,6 +88,6 @@ class VacanciesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def vacancy_params
-      params.require(:vacancy).permit(:name, :created_at, :valid_until, :salary, :contacts, :skills)
+      params.require(:vacancy).permit(:name, :valid_until, :salary, :contacts, skills_array: [])
     end
 end

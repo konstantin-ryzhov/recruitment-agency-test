@@ -31,6 +31,11 @@
       = f.text_field :contacts, class: 'form-control', placeholder: 'Укажите телефон или почту'
 
   .form-group
+    label.col-sm-3.control-label Умения:
+    .col-sm-9
+      = f.text_field :skills_array, id: 'skill_select'
+
+  .form-group
     .col-sm-offset-3.col-sm-9
       = f.submit 'Сохранить', class: 'btn btn-default'
 

@@ -2,7 +2,7 @@ h1 Умения
 p
   .form-group
     - @skills.each do |skill|
-      span
+      span.label.label-default
         = skill.name
         '
         = link_to skill, method: :delete, data: { confirm: 'Вы уверены?' }, class: '' do

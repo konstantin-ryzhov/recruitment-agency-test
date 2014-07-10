@@ -49,7 +49,7 @@ class EmployeesController < ApplicationController
     
     respond_to do |format|
       if @employee.save
-        format.html { redirect_to edit_employee_path(@employee), notice: 'Работник создан. Заполните умения.' }
+        format.html { redirect_to employee_path(@employee), notice: 'Работник создан.' }
         format.json { render :show, status: :created, location: @employee }
       else
         format.html { render :new }
@@ -90,6 +90,6 @@ class EmployeesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def employee_params
-      params.require(:employee).permit(:name, :contacts, :state, :salary)
+      params.require(:employee).permit(:name, :contacts, :state, :salary, skills_array: [])
     end
 end
