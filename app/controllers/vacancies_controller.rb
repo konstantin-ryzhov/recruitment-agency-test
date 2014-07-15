@@ -88,6 +88,7 @@ class VacanciesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def vacancy_params
+      params[:vacancy][:valid_until] = params[:vacancy][:valid_until].to_datetime.to_s rescue ''
       params.require(:vacancy).permit(:name, :valid_until, :salary, :contacts, skills_array: [])
     end
 end

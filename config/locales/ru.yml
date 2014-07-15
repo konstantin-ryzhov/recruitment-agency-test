@@ -18,10 +18,16 @@ ru:
         name: "Название"
       vacancy:
         name: "Название"
-        valid_until: "Срок действия до"
+        valid_until: "Срок действия"
         salary: "Зарплата"
         contacts: "Контакты"
         created_at: "Создано"
 
-  
+  errors:
+    messages:
+      not_a_date: "не является датой"
+      after: "должна быть позднее чем %{date}"
+      after_or_equal_to: "должна равняться или быть позднее чем %{date}"
+      before: "должна быть ранее чем %{date}"
+      before_or_equal_to: "должна равняться или быть ранее чем %{date}"
 

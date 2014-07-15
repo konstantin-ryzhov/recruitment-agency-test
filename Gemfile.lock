@@ -39,6 +39,8 @@ GEM
       execjs
     coffee-script-source (1.7.0)
     daemons (1.1.9)
+    date_validator (0.7.0)
+      activemodel (>= 3)
     erubis (2.7.0)
     eventmachine (1.0.3)
     eventmachine (1.0.3-x86-mingw32)
@@ -136,6 +138,7 @@ PLATFORMS
 DEPENDENCIES
   bootstrap-sass
   coffee-rails (~> 4.0.0)
+  date_validator
   jbuilder (~> 2.0)
   jquery-rails
   jquery-ui-rails

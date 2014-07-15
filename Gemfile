@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'date_validator'
 gem 'slim'
 gem 'bootstrap-sass'
 
