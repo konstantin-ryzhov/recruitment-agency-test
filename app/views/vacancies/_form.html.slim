@@ -18,7 +18,7 @@
   .form-group
     label.col-sm-3.control-label Срок действия:
     .col-sm-9
-      = f.date_select :valid_until, class: 'form-control'
+      = f.text_field :valid_until, value: (f.object.valid_until.strftime('%d.%m.%Y') if f.object.valid_until), class: 'form-control', id: 'valid_until'
 
   .form-group
     label.col-sm-3.control-label Зарплата:

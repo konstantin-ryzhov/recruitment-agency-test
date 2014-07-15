@@ -14,7 +14,8 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap-sprockets
-
+//= require jquery.ui.datepicker
+//= require jquery.ui.datepicker-ru
 //= require magicsuggest
 //= require_tree .
 
@@ -36,4 +37,6 @@ $(document).on('page:change', function ()
     placeholder: 'Укажите умения...',
     noSuggestionText: 'Нет совпадений...'
   });
+
+  $("#valid_until").datepicker();
 });
