@@ -11,18 +11,18 @@
 = form_for @employee, html: {class:'form-horizontal'} do |f|
   
   .form-group
-    label.col-sm-3.control-label Имя:
-    .col-sm-9
+    label.col-sm-4.control-label Имя:
+    .col-sm-8
       = f.text_field :name, class: 'form-control', placeholder: 'Укажите ФИО'
   
   .form-group
-    label.col-sm-3.control-label Контакты:
-    .col-sm-9
+    label.col-sm-4.control-label Контакты:
+    .col-sm-8
       = f.text_field :contacts, class: 'form-control', placeholder: 'Укажите телефон или почту'
 
   .form-group
-    label.col-sm-3.control-label Статус:
-    .col-sm-9
+    label.col-sm-4.control-label Статус:
+    .col-sm-8
       = f.collection_radio_buttons :state,\
                                    Employee.states.map {|k,v| [k, t(k)]}, \
                                    :first, \
@@ -30,15 +30,17 @@
         .radio = b.label { b.radio_button + b.text }
   
   .form-group
-    label.col-sm-3.control-label Зарплата:
-    .col-sm-9
+    label.col-sm-4.control-label Зарплата:
+    .col-sm-8
       = f.text_field :salary, class: 'form-control', placeholder: 'Укажите желаемую зарплату'
   
   .form-group
-    label.col-sm-3.control-label Умения:
-    .col-sm-9
+    label.col-sm-4.control-label Умения:
+    .col-sm-8
       = f.text_field :skills_array, id: 'skill_select'
 
   .form-group
-    .col-sm-offset-3.col-sm-9
-      = f.submit 'Сохранить', class: 'btn btn-default'
+    .col-sm-8.col-sm-offset-4
+      = button_tag type='submit', class: 'btn btn-default' do
+        span.glyphicon.glyphicon-ok
+        span.btn-label Сохранить

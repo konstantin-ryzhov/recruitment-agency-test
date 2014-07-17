@@ -1,41 +1,45 @@
-h1 Работник
-.row
-  .col-sm-6
-    .form-horizontal
-      .form-group
-        label.col-sm-3.control-label Имя:
-        .col-sm-9.form-control-static = @employee.name
-      .form-group
-        label.col-sm-3.control-label Контакты:
-        .col-sm-9.form-control-static = @employee.contacts
-      .form-group
-        label.col-sm-3.control-label Статус:
-        .col-sm-9.form-control-static =t @employee.state
-      .form-group
-        label.col-sm-3.control-label Зарплата:
-        .col-sm-9.form-control-static #{@employee.salary} руб.
-      .form-group
-        label.col-sm-3.control-label Умения:
-        .col-sm-9.form-control-static
-          = render @employee.skills
-          = 'нет умений...' if @employee.skills.count <= 0
-      .form-group
-        .col-sm-9.col-sm-offset-3
-          = link_to 'Редактировать', edit_employee_path(@employee), class: 'btn btn-default'
+= content_for :header
+  | Работник
+  .btn-group.pull-right
+    = link_to edit_employee_path(@employee), class: 'btn btn-default ' do
+      span.glyphicon.glyphicon-pencil
+      span.btn-label Редактировать
+    = link_to @employee, method: :delete, data: { confirm: 'Вы уверены?' }, class: 'btn btn-default' do
+      span.glyphicon.glyphicon-remove
+      span.btn-label Удалить
 
-  .col-sm-5.col-sm-offset-1
-    .panel.panel-default
-      .panel-heading
-        h4 Подходящие вакансии:
-      .panel-body
-        - @suitable.each do |v|
-          = render v
-        = 'Нет вакансий' if @suitable.empty?
+.form-horizontal
+  .form-group
+    label.col-sm-4.control-label Имя:
+    .col-sm-8.form-control-static = @employee.name
+  .form-group
+    label.col-sm-4.control-label Контакты:
+    .col-sm-8.form-control-static = @employee.contacts
+  .form-group
+    label.col-sm-4.control-label Статус:
+    .col-sm-8.form-control-static =t @employee.state
+  .form-group
+    label.col-sm-4.control-label Зарплата:
+    .col-sm-8.form-control-static #{@employee.salary} руб.
+  .form-group
+    label.col-sm-4.control-label Умения:
+    .col-sm-8.form-control-static
+      = render @employee.skills
+      = 'нет умений...' if @employee.skills.count <= 0
 
-    .panel.panel-default
-      .panel-heading
-        h4 Частично подходящие вакансии:
-      .panel-body
-        - @partially.each do |v|
-          = render v
-        = 'Нет вакансий' if @partially.empty?
+= content_for :side do
+  .panel.panel-default
+    .panel-heading
+      h4 Подходящие вакансии:
+    .panel-body
+      - @suitable.each do |v|
+        = render v
+      = 'Нет вакансий' if @suitable.empty?
+
+  .panel.panel-default
+    .panel-heading
+      h4 Частично подходящие вакансии:
+    .panel-body
+      - @partially.each do |v|
+        = render v
+      = 'Нет вакансий' if @partially.empty?

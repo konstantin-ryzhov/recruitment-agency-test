@@ -1,44 +1,48 @@
-h1 Вакансия
-.row
-  .col-sm-6
-    .form-horizontal
-      .form-group
-        label.col-sm-3.control-label Название
-        .col-sm-9.form-control-static = @vacancy.name
-      .form-group
-        label.col-sm-3.control-label Добавлено:
-        .col-sm-9.form-control-static = l @vacancy.created_at.to_date
-      .form-group
-        label.col-sm-3.control-label Срок действия:
-        .col-sm-9.form-control-static = l @vacancy.valid_until.to_date
-      .form-group
-        label.col-sm-3.control-label Зарплата:
-        .col-sm-9.form-control-static = @vacancy.salary
-      .form-group
-        label.col-sm-3.control-label Контакты:
-        .col-sm-9.form-control-static = @vacancy.contacts
-      .form-group
-        label.col-sm-3.control-label Умения:
-        .col-sm-9.form-control-static
-          = render @vacancy.skills
-          = 'нет умений...' if @vacancy.skills.count <= 0
-      .form-group
-        .col-sm-9.col-sm-offset-3
-          = link_to 'Редактировать', edit_vacancy_path(@vacancy), class: 'btn btn-default'
+= content_for :header
+  | Вакансия
+  .btn-group.pull-right
+    = link_to edit_vacancy_path(@vacancy), class: 'btn btn-default' do
+      span.glyphicon.glyphicon-pencil
+      span.btn-label Редактировать
+    = link_to @vacancy, method: :delete, data: { confirm: 'Вы уверены?' }, class: 'btn btn-default' do
+      span.glyphicon.glyphicon-remove
+      span.btn-label Удалить
 
-  .col-sm-5.col-sm-offset-1
-    .panel.panel-default
-      .panel-heading
-        h4 Подходящие работники
-      .panel-body
-        - @suitable.each do |e|
-          = render e
-        = 'Нет работников' if @suitable.empty?
+.form-horizontal
+  .form-group
+    label.col-sm-4.control-label Название
+    .col-sm-8.form-control-static = @vacancy.name
+  .form-group
+    label.col-sm-4.control-label Добавлено:
+    .col-sm-8.form-control-static = l @vacancy.created_at.to_date
+  .form-group
+    label.col-sm-4.control-label Срок действия:
+    .col-sm-8.form-control-static = l @vacancy.valid_until.to_date
+  .form-group
+    label.col-sm-4.control-label Зарплата:
+    .col-sm-8.form-control-static = @vacancy.salary
+  .form-group
+    label.col-sm-4.control-label Контакты:
+    .col-sm-8.form-control-static = @vacancy.contacts
+  .form-group
+    label.col-sm-4.control-label Умения:
+    .col-sm-8.form-control-static
+      = render @vacancy.skills
+      = 'нет умений...' if @vacancy.skills.count <= 0
 
-    .panel.panel-default
-      .panel-heading
-        h4 Частично подходящие работники
-      .panel-body
-        - @partially.each do |e|
-          = render e
-        = 'Нет работников' if @partially.empty?
+= content_for :side do
+  .panel.panel-default
+    .panel-heading
+      h4 Подходящие работники
+    .panel-body
+      - @suitable.each do |e|
+        = render e
+      = 'Нет работников' if @suitable.empty?
+
+  .panel.panel-default
+    .panel-heading
+      h4 Частично подходящие работники
+    .panel-body
+      - @partially.each do |e|
+        = render e
+      = 'Нет работников' if @partially.empty?

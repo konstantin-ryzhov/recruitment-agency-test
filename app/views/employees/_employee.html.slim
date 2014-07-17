@@ -1,9 +1,4 @@
+p = link_to employee.name, employee_path(employee)
 p
-  .media
-    .media-body
-      .media-heading
-        p
-          = link_to employee.name, employee_path(employee)
-      p
-        = render employee.skills
-        strong #{employee.salary} руб.
+  = render employee.skills
+  strong #{employee.salary} руб.

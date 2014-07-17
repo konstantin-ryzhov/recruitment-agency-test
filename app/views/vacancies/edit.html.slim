@@ -1,6 +1,6 @@
-h1 Вакансия
-.row
-  .col-sm-6
-    = render 'form'
+= content_for :header
+  | Вакансия
+
+= render 'form'
 
     / = render partial: 'skills/edit_skills', locals: { parent: @vacancy }

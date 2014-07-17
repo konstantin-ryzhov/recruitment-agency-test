@@ -22,6 +22,7 @@
 body {
 	padding-top: 20px;
 	padding-bottom: 20px;
+  background-color: #ccc;
 }
 
 .label-default {
@@ -32,6 +33,10 @@ body {
       text-decoration: none;
     }
   }
+}
+
+.btn-label {
+  padding-left: 6px;
 }
 
 .form-control-addition {

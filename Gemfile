@@ -1,13 +1,15 @@
 source 'https://rubygems.org'
 
+gem 'will_paginate-bootstrap'
+#gem 'will_paginate'
 gem 'date_validator'
 gem 'slim'
 gem 'bootstrap-sass'
+gem 'jquery-ui-rails'
 
 gem 'russian', '~> 0.6.0'
 gem 'thin'
 gem 'tzinfo-data' # для запуска под Windows
-gem 'jquery-ui-rails'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.1'

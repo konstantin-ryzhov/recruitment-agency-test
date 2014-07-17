@@ -23,11 +23,17 @@ html
               li = link_to 'Вакансии', vacancies_path
               li = link_to 'Умения', skills_path
 
-      - if notice
-        div class='alert alert-success alert-dismissible'
-          = notice
-          button type="button" class="close" data-dismiss="alert"
-            span aria-hidden="true" &times;
-            span class="sr-only" Close
-
-      == yield
+      .row
+        .col-sm-7
+          - if notice
+            .alert.alert-success.alert-dismissible
+              = notice
+              button type="button" class="close" data-dismiss="alert"
+                span aria-hidden="true" &times;
+                span class="sr-only" Close
+          .panel.panel-default
+            .panel-body
+              .page-header
+                h1 == yield :header
+              == yield
+        .col-sm-5 == yield :side

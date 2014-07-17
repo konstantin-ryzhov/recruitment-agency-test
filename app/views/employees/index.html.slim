@@ -1,3 +1,8 @@
-h1 Работники
+= content_for :header
+  | Работники
+  = link_to new_employee_path, class: 'btn btn-default pull-right' do
+    span.glyphicon.glyphicon-plus-sign
+    span.btn-label Добавить
+
 = render @employees
-p = link_to 'Новый работник', new_employee_path, class: 'btn btn-default'
+p = will_paginate @employees, renderer: BootstrapPagination::Rails

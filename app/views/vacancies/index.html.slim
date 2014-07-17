@@ -1,3 +1,8 @@
-h1 Вакансии
+= content_for :header
+  | Вакансии
+  = link_to new_vacancy_path, class: 'btn btn-default pull-right' do
+    span.glyphicon.glyphicon-plus-sign
+    span.btn-label Добавить
+
 = render @vacancies
-p = link_to 'Новая вакансия', new_vacancy_path, class: 'btn btn-default'
+p = will_paginate @vacancies, renderer: BootstrapPagination::Rails

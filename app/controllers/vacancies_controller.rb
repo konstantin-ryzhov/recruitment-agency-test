@@ -4,7 +4,7 @@ class VacanciesController < ApplicationController
   # GET /vacancies
   # GET /vacancies.json
   def index
-    @vacancies = Vacancy.all
+    @vacancies = Vacancy.paginate(:page => params[:page], :per_page => 5)
   end
 
   # GET /vacancies/1
