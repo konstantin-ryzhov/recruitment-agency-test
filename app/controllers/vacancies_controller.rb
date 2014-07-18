@@ -4,31 +4,15 @@ class VacanciesController < ApplicationController
   # GET /vacancies
   # GET /vacancies.json
   def index
-    @vacancies = Vacancy.paginate(:page => params[:page], :per_page => 5)
+    @vacancies = Vacancy.includes(:skills).paginate(:page => params[:page], :per_page => 5)
   end
 
   # GET /vacancies/1
   # GET /vacancies/1.json
   def show
-    employees = Array.new
-    @suitable = Array.new
-    @partially = Array.new
-
-    @vacancy.skills.each do |skill|
-      employees.concat skill.employees.to_a
-    end
-    employees.uniq!
-    
-    employees.each do |e|
-      if @vacancy.skills - e.skills == []
-        @suitable.push e unless e.employed?
-      else
-        @partially.push e unless e.employed?
-      end
-    end
-
-    @suitable.sort_by! { |e| e.salary }
-    @partially.sort_by! { |e| e.salary }
+    @vacancy_skills = @vacancy.skills
+    @suitable_employees = @vacancy.suitable
+    @partly_suitable_employees = @vacancy.partly_suitable
   end
 
   # GET /vacancies/new

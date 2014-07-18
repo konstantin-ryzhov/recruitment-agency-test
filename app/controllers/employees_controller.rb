@@ -4,33 +4,15 @@ class EmployeesController < ApplicationController
   # GET /employees
   # GET /employees.json
   def index
-    @employees = Employee.paginate(:page => params[:page], :per_page => 5)
+    @employees = Employee.includes(:skills).paginate(:page => params[:page], :per_page => 5)
   end
 
   # GET /employees/1
   # GET /employees/1.json
   def show
-    vacancies = Array.new
-    @suitable = Array.new
-    @partially = Array.new
-
-    @employee.skills.each do |skill|
-      vacancies.concat skill.vacancies.where("valid_until > ?",DateTime.now).to_a
-    end
-    vacancies.uniq!
-    
-    vacancies.each do |v|
-      if v.skills - @employee.skills == []
-        @suitable.push v
-      else
-        @partially.push v
-      end
-    end
-
-    @suitable.sort_by! { |v| v.salary }
-    @suitable.reverse!
-    @partially.sort_by! { |v| v.salary }
-    @partially.reverse!
+    @employee_skills = @employee.skills
+    @suitable_vacancies = @employee.suitable
+    @partly_suitable_vacancies = @employee.partly_suitable
   end
 
   # GET /employees/new

@@ -27,22 +27,22 @@
   .form-group
     label.col-sm-4.control-label Умения:
     .col-sm-8.form-control-static
-      = render @vacancy.skills
-      = 'нет умений...' if @vacancy.skills.count <= 0
+      = render @vacancy_skills
+      = 'нет умений...' if @vacancy_skills.empty?
 
 = content_for :side do
   .panel.panel-default
     .panel-heading
       h4 Подходящие работники
     .panel-body
-      - @suitable.each do |e|
+      - @suitable_employees.each do |e|
         = render e
-      = 'Нет работников' if @suitable.empty?
+      = 'Нет работников' if @suitable_employees.empty?
 
   .panel.panel-default
     .panel-heading
       h4 Частично подходящие работники
     .panel-body
-      - @partially.each do |e|
+      - @partly_suitable_employees.each do |e|
         = render e
-      = 'Нет работников' if @partially.empty?
+      = 'Нет работников' if @partly_suitable_employees.empty?
