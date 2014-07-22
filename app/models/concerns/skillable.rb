@@ -8,6 +8,8 @@ module Skillable
   def skills_array=(value)
     skills.clear
 
+    return if value.nil?
+
     value.uniq.each do |s|
       skill = Skill.find_or_create_by name: s
       skills << skill
