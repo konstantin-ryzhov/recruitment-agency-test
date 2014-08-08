@@ -1,18 +1,13 @@
 = content_for :header
   | Умения
-  = form_tag :skills, class: 'pull-right' do
-    .form-group
-      .input-group
-        /= autocomplete_field :skill, :name, autocomplete_skill_name_skills_path, class: 'form-control', placeholder: 'Укажите умение'
-        = text_field :skill, :name, class: 'form-control', placeholder: 'Введите умение'
-        span.input-group-btn
-          = button_tag class: 'btn btn-default' do
-            span.glyphicon.glyphicon-plus-sign
-            span.btn-label Добавить
-p
-  - @skills.each do |skill|
-    span.label.label-default
-      = skill.name
-      '
-      = link_to skill, method: :delete, data: { confirm: 'Вы уверены?' }, class: '' do
-        strong &times;
+
+- @skills.each do |skill|
+  p
+    strong = skill.name
+  p
+    ' Вакансий:
+    strong = skill.vacancies.count
+    '  Работников:
+    strong = skill.employees.count
+
+p = will_paginate @skills, renderer: BootstrapPagination::Rails
