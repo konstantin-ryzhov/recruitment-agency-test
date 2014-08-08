@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140619190758) do
+ActiveRecord::Schema.define(version: 20140808105657) do
 
   create_table "employees", force: true do |t|
     t.string  "name"
@@ -26,7 +26,9 @@ ActiveRecord::Schema.define(version: 20140619190758) do
   end
 
   create_table "skills", force: true do |t|
-    t.string "name"
+    t.string  "name"
+    t.integer "vacancies_count", default: 0
+    t.integer "employees_count", default: 0
   end
 
   add_index "skills", ["name"], name: "index_skills_on_name", unique: true
