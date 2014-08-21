@@ -6,6 +6,6 @@ FactoryGirl.define do
     f.valid_until  { Faker::Business.credit_card_expiry_date }
     f.salary       { Faker::Number.number(6) }
     f.contacts     { Faker::Internet.email }
-    f.skills_array { Faker::Lorem.words(3) }
+    #f.skills_array { Faker::Lorem.words(3) }
   end
 end
