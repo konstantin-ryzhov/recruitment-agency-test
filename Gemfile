@@ -22,11 +22,11 @@ gem 'bootstrap-sass'
 gem 'jquery-ui-rails'
 
 gem 'russian', '~> 0.6.0'
-gem 'thin'
-gem 'tzinfo-data' # для запуска под Windows
+# gem 'thin'
+# gem 'tzinfo-data' # для запуска под Windows
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.1'
+gem 'rails'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use SCSS for stylesheets

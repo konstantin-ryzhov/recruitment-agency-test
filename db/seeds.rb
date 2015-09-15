@@ -12,12 +12,57 @@ Employee.create!(name: 'Романов Иван Григорьевич', contact
 Employee.create!(name: 'Каширин Герасим Семенович', contacts: 'gkashirin@gmail.com', state: :employed, salary: 120000, skills_array: ['Ruby','C++','C#','JavaScript'] )
 Employee.create!(name: 'Ильин Семен Александрович', contacts: 'silin@gmail.com', state: :interesting, salary: 90000, skills_array: ['Ruby','SQL'] )
 
-Vacancy.create!(name: 'Backend Ruby разработчик', salary: 120000, valid_until: DateTime.new(2014,10,11), contacts: '8(800)2000499', skills_array: ['Ruby','Rails','SQL'] )
-Vacancy.create!(name: 'Frontend Ruby разработчик', salary: 110000, valid_until: DateTime.new(2014,9,11), contacts: '8(495)2000499', skills_array: ['Ruby','Rails','JavaScript'] )
-Vacancy.create!(name: 'C++ разработчик', salary: 90000, valid_until: DateTime.new(2014,8,15), contacts: '8(499)7780478', skills_array: ['C++','C'] )
-Vacancy.create!(name: '.NET разработчик', salary: 80000, valid_until: DateTime.new(2014,10,1), contacts: '8(459)2045699', skills_array: ['C#','Visual Basic','SQL'] )
-Vacancy.create!(name: 'Backend разработчик', salary: 115000, valid_until: DateTime.new(2014,12,5), contacts: '8(800)2000456', skills_array: ['NodeJS','SQL'] )
-Vacancy.create!(name: 'Frontend разработчик', salary: 130000, valid_until: DateTime.new(2014,12,6), contacts: '8(499)1440423', skills_array: ['JavaScript','Adobe_CS6'] )
-Vacancy.create!(name: 'Художник-дизайнер', salary: 180000, valid_until: DateTime.new(2014,11,1), contacts: '8(499)3450447', skills_array: ['Adobe_CS6','JavaScript'] )
-Vacancy.create!(name: 'Руководитель проектов', salary: 200000, valid_until: DateTime.new(2014,6,30), contacts: '8(495)5670765', skills_array: ['Ruby','C++','C#','JavaScript'] )
-Vacancy.create!(name: 'Java разработчик', salary: 110000, valid_until: DateTime.new(2014,7,30), contacts: '8(800)2230499', skills_array: ['Java','C','SQL'] )
+Vacancy.create!(
+	name: 'Backend Ruby разработчик',
+	salary: 120000, 
+	valid_until: Date.today + 15, 
+	contacts: '8(800)2000499', 
+	skills_array: ['Ruby','Rails','SQL'] )
+Vacancy.create!(
+	name: 'Frontend Ruby разработчик', 
+	salary: 110000, 
+	valid_until: Date.today + 15, 
+	contacts: '8(495)2000499', 
+	skills_array: ['Ruby','Rails','JavaScript'] )
+Vacancy.create!(
+	name: 'C++ разработчик', 
+	salary: 90000, 
+	valid_until: Date.today - 15, 
+	contacts: '8(499)7780478', 
+	skills_array: ['C++','C'] )
+Vacancy.create!(
+	name: '.NET разработчик', 
+	salary: 80000, 
+	valid_until: Date.today + 30, 
+	contacts: '8(459)2045699', 
+	skills_array: ['C#','Visual Basic','SQL'] )
+Vacancy.create!(
+	name: 'Backend разработчик', 
+	salary: 115000, 
+	valid_until: Date.today + 90, 
+	contacts: '8(800)2000456', 
+	skills_array: ['NodeJS','SQL'] )
+Vacancy.create!(
+	name: 'Frontend разработчик', 
+	salary: 130000, 
+	valid_until: Date.today + 15, 
+	contacts: '8(499)1440423', 
+	skills_array: ['JavaScript','Adobe_CS6'] )
+Vacancy.create!(
+	name: 'Художник-дизайнер', 
+	salary: 180000, 
+	valid_until: Date.today + 15, 
+	contacts: '8(499)3450447', 
+	skills_array: ['Adobe_CS6','JavaScript'] )
+Vacancy.create!(
+	name: 'Руководитель проектов', 
+	salary: 200000, 
+	valid_until: Date.today + 15, 
+	contacts: '8(495)5670765', 
+	skills_array: ['Ruby','C++','C#','JavaScript'] )
+Vacancy.create!(
+	name: 'Java разработчик', 
+	salary: 110000, 
+	valid_until: Date.today + 15, 
+	contacts: '8(800)2230499', 
+	skills_array: ['Java','C','SQL'] )
